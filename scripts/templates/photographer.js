@@ -12,34 +12,50 @@ async function getPhotographers() {
 }
 
 function photographerTemplate(data) {
-  const { name, portrait, city, tagline, price } = data;
-
+  // var isLoaded=false, une fois que tout est chargé, le passer à true pour afficher toute la page
+  const { name, id, city, country, tagline, price, portrait } = data; // Récupération des données du photographe
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
 
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    
+    // Création d'un lien contenant le titre et la photo du photographe
+    const a = document.createElement("a");
+    a.setAttribute("href", `./photographer.html?id=${id}`);
+    a.setAttribute("aria-label", name);
+
     const h2 = document.createElement("h2");
     h2.textContent = name;
-    
-    const h3 = document.createElement("h3");
-    h3.textContent = city;
-    
-    const p = document.createElement("p");
-    p.textContent = tagline;
-    
-    const p_2 = document.createElement("p");
-    p_2.textContent = price + "€/jour";
 
-    article.appendChild(img);
-    article.appendChild(h2);
-    article.appendChild(h3);
-    article.appendChild(p);
-    article.appendChild(p_2);
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
+    img.setAttribute("class", "imgPhotographer");
+    
+    // Création de la localisation
+    const localisationElement = document.createElement("p");
+    localisationElement.textContent = `${city}, ${country}`;
+    localisationElement.setAttribute("class", "localisation");
+
+    // Création de la phrase d'acroche
+    const taglineElement = document.createElement("p");
+    taglineElement.textContent = tagline;
+    taglineElement.setAttribute("class", "tagline");
+
+    // Création du prix
+    const priceElement = document.createElement("p");
+    priceElement.textContent = `${price}€/jour`;
+    priceElement.setAttribute("class", "price");
+
+    // Ajout de ces éléments à l'article
+    article.appendChild(a);
+    a.appendChild(img);
+    a.appendChild(h2);
+    article.appendChild(localisationElement);
+    article.appendChild(taglineElement);
+    article.appendChild(priceElement);
+
     return article;
   }
-  return { name, picture, getUserCardDOM };
+  return { name, id, city, country, tagline, price, portrait, getUserCardDOM };
 }
