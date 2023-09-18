@@ -3,36 +3,90 @@
   <head>
     <!-- Pourquoi ce n'est pas photographer.css qui est lié ici ? -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye - photographe </title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Fisheye - photographe</title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./" aria-label="Fisheye Home page">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()">
+          Contactez-moi
+        </button>
+      </div>
+
+      <div id="mediasContainer">
+        <div class="sortChange">
+          <p id="labelSort" role="label">Trier par</p>
+          <div
+            class="select--custom"
+            role="listbox"
+            id="select"
+            aria-labelledby="labelSort"
+            aria-activedescendant="popularity"
+            tabindex="0"
+          >
+          <!-- Générer les spans avec de la data. Faire une boucle pour savoir quoi affiché, lequel est sélectionné -->
+            <span
+              role="option"
+              class="span option--current selected"
+              id="popularity"
+              aria-selected="true"
+              >Popularité</span
+            >
+            <div class="options">
+              <span
+                class="span option"
+                role="option"
+                id="date"
+                aria-selected="false"
+                >Date</span
+              >
+              <span
+                class="span option"
+                role="option"
+                id="title"
+                aria-selected="false"
+                >Titre</span
+              >
+            </div>
+          </div>
+        </div>
+        <section class="medias"></section>
       </div>
     </main>
     <div id="contact_modal">
-			<div class="modal">
-				<header>
+      <div class="modal">
+        <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
+        <form>
+          <div>
+            <label>Prénom</label>
+            <input />
+          </div>
           <button class="contact_button">Envoyer</button>
-				</form>
-			</div>
-		</div>
+        </form>
+      </div>
+    </div>
+    <script src="/scripts/templates/photographer.js"></script>
+    <script src="/scripts/templates/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/pages/media.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

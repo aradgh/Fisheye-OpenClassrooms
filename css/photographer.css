@@ -1,76 +1,311 @@
+/* entête du photographe */
+.photograph-header {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 50px;
+}
+.photograph-header div {
+  width: auto;
+  max-width: 300px;
+}
+.photograph-header h2 {
+  color: #d3573c;
+  font-size: 64px;
+  margin: 0;
+  font-weight: normal;
+}
+.photograph-header p {
+  margin-bottom: 0;
+}
+.photograph-header p.locality {
+  color: #901c1c;
+  font-size: 24px;
+  margin-top: 0;
+}
+.photograph-header p.tagline {
+  color: #525252;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.contact_button {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Trier par */
+.sortChange {
+  display: flex;
+}
+#labelSort {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 25px;
+}
+.select--custom {
+  width: 170px;
+  height: 69px;
+  position: relative;
+  background-color: #901c1c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.select--custom span {
+  width: 100%;
+  height: 69px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+}
+.select--open span {
+  border-bottom: 1.5px solid #fff;
+}
+.select--custom.select--open {
+  border-radius: 5px 5px 0 0;
+}
+.options {
+  width: 170px;
+  height: auto;
+  z-index: 2;
+  position: absolute;
+  top: 69px;
+  left: 0;
+  background-color: #901c1c;
+  margin: 0;
+  display: none;
+  border-radius: 0 0 5px 5px;
+  padding: 0 20px;
+}
+.select--open .options {
+  display: block;
+}
+.option--current {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+.option--current::after {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  content: ">";
+  transform: rotate(90deg);
+  right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 70ms ease;
+}
+.select--open .option--current::after {
+  transform: rotate(-90deg);
+}
+.option {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1.5px solid #fff;
+}
+.option:last-child {
+  border: none;
+}
+.selected {
+  width: 170px;
+  height: 69px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* medias */
+#mediasContainer {
+  margin: 10px 100px;
+}
+main section.medias {
+  display: flex;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  column-gap: 135px;
+  row-gap: 30px;
+  margin-top: 30px;
+}
+main section.medias figure.mediaCard {
+  width: 350px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+main section.medias figure.mediaCard .media__image {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+main section.medias figure.mediaCard figcaption.media__figcaption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 350px;
+  height: 50px;
+}
+main section.medias figure.mediaCard figcaption.media__figcaption p {
+  font-size: 24px;
+  color: #901c1c;
+  font-weight: normal;
+  margin: 0;
+}
+main
+  section.medias
+  figure.mediaCard
+  figcaption.media__figcaption
+  .media__figcaption__like {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main
+  section.medias
+  figure.mediaCard
+  figcaption.media__figcaption
+  .media__figcaption__like
+  .media__figcfaption__likeIco {
+  width: 18px;
+}
+main
+  section.medias
+  figure.mediaCard
+  figcaption.media__figcaption
+  .media__figcaption__like
+  .media__figcaption__likeText {
+  margin-right: 5px;
+}
+.medias__likes {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  width: 376px;
+  height: 55px;
+  background-color: #db8876;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+.medias__likes p {
+  font-size: 24px;
+  font-weight: 600;
+}
+.likes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.likes .likes__text {
+  margin-right: 5px;
+}
+.likes .likes__icone {
+  width: 18px;
+}
+
 #contact_modal {
-    display: none;
+  display: none;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
 }
 
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+  border-radius: 5px;
+  background-color: #db8876;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px;
+  margin: auto;
 }
 
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
+  font-size: 64px;
+  font-weight: normal;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 36px;
+  color: #312e2e;
+  font-size: 36px;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
 form input {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
 }

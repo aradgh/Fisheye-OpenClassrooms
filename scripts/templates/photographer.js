@@ -16,6 +16,7 @@ function photographerTemplate(data) {
   const { name, id, city, country, tagline, price, portrait } = data; // Récupération des données du photographe
   const picture = `assets/photographers/${portrait}`;
 
+  // Carte du photographe pour la page d'accueil
   function getUserCardDOM() {
     const article = document.createElement("article");
 
@@ -31,7 +32,7 @@ function photographerTemplate(data) {
     img.setAttribute("src", picture);
     img.setAttribute("alt", name);
     img.setAttribute("class", "imgPhotographer");
-    
+
     // Création de la localisation
     const localisationElement = document.createElement("p");
     localisationElement.textContent = `${city}, ${country}`;
@@ -57,5 +58,45 @@ function photographerTemplate(data) {
 
     return article;
   }
-  return { name, id, city, country, tagline, price, portrait, getUserCardDOM };
+
+  // Carte du photographe dans la page photographe
+  function getIdentityPhotographerDOM() {
+    const div = document.createElement("div");
+    const titleElement = document.createElement("h2");
+    titleElement.textContent = name;
+    const localityElement = document.createElement("p");
+    localityElement.textContent = `${city}, ${country}`;
+    localityElement.setAttribute("class", "locality");
+    const taglineELement = document.createElement("p");
+    taglineELement.textContent = tagline;
+    taglineELement.setAttribute("class", "tagline");
+    div.appendChild(titleElement);
+    div.appendChild(localityElement);
+    div.appendChild(taglineELement);
+
+    return div;
+  }
+
+  // Afficher l'image du photographe dans la page photographe
+  function getImgPhotographerDOM() {
+    const img = document.createElement("img");
+    img.setAttribute("src", picture);
+    img.setAttribute("alt", name);
+    img.setAttribute("class", "imgPhotographer");
+
+    return img;
+  }
+
+  return {
+    name,
+    id,
+    city,
+    country,
+    tagline,
+    price,
+    portrait,
+    getUserCardDOM,
+    getIdentityPhotographerDOM,
+    getImgPhotographerDOM,
+  };
 }
