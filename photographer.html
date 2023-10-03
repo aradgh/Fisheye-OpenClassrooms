@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Pourquoi ce n'est pas photographer.css qui est lié ici ? -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
@@ -29,6 +28,18 @@
       </div>
 
       <div id="mediasContainer">
+        <div class="medias__likes" tabindex="0">
+          <div class="likes">
+            <p class="likes__text" id="nbLikes"></p>
+            <img
+              src="assets/icons/heart__full--black.svg"
+              alt=""
+              class="likes__icone"
+              aria-label="likes"
+            />
+          </div>
+          <p class="price" id="price"></p>
+        </div>
         <div class="sortChange">
           <p id="labelSort" role="label">Trier par</p>
           <div
@@ -39,30 +50,7 @@
             aria-activedescendant="popularity"
             tabindex="0"
           >
-          <!-- Générer les spans avec de la data. Faire une boucle pour savoir quoi affiché, lequel est sélectionné -->
-            <span
-              role="option"
-              class="span option--current selected"
-              id="popularity"
-              aria-selected="true"
-              >Popularité</span
-            >
-            <div class="options">
-              <span
-                class="span option"
-                role="option"
-                id="date"
-                aria-selected="false"
-                >Date</span
-              >
-              <span
-                class="span option"
-                role="option"
-                id="title"
-                aria-selected="false"
-                >Titre</span
-              >
-            </div>
+            <select id="sortingOptions"></select>
           </div>
         </div>
         <section class="medias"></section>
@@ -83,10 +71,10 @@
         </form>
       </div>
     </div>
-    <script src="/scripts/templates/photographer.js"></script>
-    <script src="/scripts/templates/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/pages/media.js"></script>
+    <script src="/scripts/templates/photographer.js"></script>
+    <script src="/scripts/templates/media.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

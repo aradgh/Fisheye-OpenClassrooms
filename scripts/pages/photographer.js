@@ -42,112 +42,28 @@ async function displayPhotographerData(photographer) {
   buttonContact.after(imgPhotographerDOM); // On ajoute après le bouton contact l'image
 }
 
-// Fonction permettant l'affichage des médias du photographe
-async function displayMedias(medias, name) {
-  const section = document.querySelector(".medias");
-  let i = 0;
-  medias.forEach((media) => {
-    const mediaModel = mediaTemplate(media, name);
-    const getMediasDOM = mediaModel.getMediasDOM(i);
-    section.appendChild(getMediasDOM);
-    i++;
-  });
-}
+function lightbox() {
+  // Éléments du DOM
+  const figures = document.querySelectorAll("figure");
 
-// à revoir, plus optimisé avec des variables
-// Fonction permettant de changer l'option affiché
-function changeOption(span) {
-  const options = document.querySelector(".options");
-  const selected = document.querySelector(".selected");
-
-  span.classList.remove("option");
-  span.classList.add("option--current");
-  span.classList.add("selected");
-  span.setAttribute("aria-selected", "true");
-  options.before(span);
-
-  options.appendChild(selected);
-  selected.classList.add("option");
-  selected.classList.remove("option--current");
-  selected.classList.remove("selected");
-  selected.setAttribute("aria-selected", "false");
-}
-
-// Fonction permettant d'écouter le click sur une option du select et de réafficher les médias triés
-// Clean code, comprendre tout de suite ce que fait mon code. Utiliser des fonctions pour chaque if
-// Ne pas mettre toute la logique dans des if else
-// Peut importe le nombre de fonctions, Eviter les mega-fonctions, pas trop longue, max 20 lignes
-async function eventOption(medias, name) {
-    //à changer, ne pas aller chercher l'info dans le DOM
-  const span = document.querySelectorAll(".span"); // On récupère toutes les span
-  span.forEach((span) => {
-    span.addEventListener("click", async (e) => {
-      e.preventDefault();
-      if (span.getAttribute("id") === "popularity") {
-        // Si la span contient l'id popularity
-        if (!span.classList.contains("selected")) {
-          // Si elle n'est pas actuellement selectionner, on effectu le tri et on la met en selectionné
-          changeOption(span);
-          const mediasNew = await sortMedia("popularity", medias);
-          const mediaCurrent = document.querySelectorAll(".mediaCard");
-          mediaCurrent.forEach((media) => {
-            media.remove();
-          });
-          await displayMedias(mediasNew, name);
-          }
-      } else if (span.getAttribute("id") === "date") {
-        if (!span.classList.contains("selected")) {
-          changeOption(span);
-          const mediasNew = await sortMedia("date", medias);
-          const mediaCurrent = document.querySelectorAll(".mediaCard");
-          mediaCurrent.forEach((media) => {
-            media.remove();
-          });
-          await displayMedias(mediasNew, name);
-        }
-      } else if (span.getAttribute("id") === "title") {
-        if (!span.classList.contains("selected")) {
-          changeOption(span);
-          const mediasNew = await sortMedia("title", medias);
-          const mediaCurrent = document.querySelectorAll(".mediaCard");
-          mediaCurrent.forEach((media) => {
-            media.remove();
-          });
-          await displayMedias(mediasNew, name);
-          console.log(document.querySelectorAll("figure"));
-        }
-      } else {
-        console.log(
-          "une erreur a été detecté lors de la récupération du type de tri"
-        );
-      }
+  figures.forEach((figure) => {
+    figure.addEventListener("click", () => {
+      console.log("ça marchheeeee");
     });
-  });
-}
-
-// Fonction permettant d'ouvrir le trie
-async function openSort() {
-  const sort = document.querySelector(".select--custom");
-  sort.addEventListener("click", () => {
-    if (sort.classList.contains("select--open")) {
-      sort.classList.remove("select--open");
-    } else {
-      sort.classList.add("select--open");
-    }
   });
 }
 
 // Fonction d'initialisation
 async function init() {
-    // Avoir une var globale avec tous les photographers et l'appeler dans le init
+  // Avoir une var globale avec tous les photographers et l'appeler dans le init
   const photographer = await getPhotographer();
   const medias = await sortMedia("popularity", await getMedia());
   const { name } = photographer;
 
   await displayPhotographerData(photographer);
   await displayMedias(medias, name);
-  eventOption(medias, name);
-  openSort();
+
+  lightbox();
 }
 
 init();

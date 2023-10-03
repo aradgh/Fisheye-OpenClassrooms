@@ -74,6 +74,10 @@ function photographerTemplate(data) {
     div.appendChild(localityElement);
     div.appendChild(taglineELement);
 
+    const priceElement = document.getElementById("price");
+    priceElement.setAttribute("aria-label", `${price}€ par jour`);
+    priceElement.textContent = `${price}€ / Jour`;
+
     return div;
   }
 
