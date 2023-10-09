@@ -8,10 +8,10 @@ function mediaTemplate(data, name) {
 
   //   Faire une construction par type de média (en fonction de propriété video ou image)
   // Fonction permettant d'afficher les médias
-  function getMediasDOM(i) {
+  function getMediasDOM(id) {
     const figure = document.createElement("figure");
     figure.setAttribute("class", "mediaCard");
-    figure.setAttribute("id", i);
+    figure.setAttribute("id", id);
     // Factory
     if (image != undefined) {
       // Si l'image existe
@@ -91,31 +91,11 @@ function createHeartComponent() {
   return like;
 }
 
-async function getGlobalLikes() {
-  // return new Promise((resolve)=>{
-  //   getMedia()
-  // })
+// async function initLikes() {
+//   let totalLikes = await getGlobalLikes();
+//   displayGlobalLikes(totalLikes);
+// }
 
-  const photographerMedias = await getMedia();
-  let totalLikes = 0;
-  photographerMedias.forEach((photographerMedia) => {
-    totalLikes += photographerMedia.likes;
-  });
-
-  return totalLikes;
-}
-
-// Affichage des likes dans l'encart en bas à droite
-function displayGlobalLikes(likes) {
-  const el = document.getElementById("nbLikes");
-  el.textContent = likes;
-}
-
-async function initLikes() {
-  let totalLikes = await getGlobalLikes();
-  displayGlobalLikes(totalLikes);
-}
-
-initLikes();
+// initLikes();
 
 

@@ -54,12 +54,10 @@ async function sortMedia(sortType, media) {
 // Fonction permettant l'affichage des médias du photographe
 async function displayMedias(medias, name) {
   const section = document.querySelector(".medias");
-  let i = 0;
   medias.forEach((media) => {
     const mediaModel = mediaTemplate(media, name);
-    const getMediasDOM = mediaModel.getMediasDOM(i);
+    const getMediasDOM = mediaModel.getMediasDOM(media.id);
     section.appendChild(getMediasDOM);
-    i++;
   });
 }
 
