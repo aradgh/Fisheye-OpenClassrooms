@@ -1,9 +1,9 @@
+// Récupérer la liste des photographes dans photographers.json
 async function getPhotographers() {
   try {
     const response = await fetch("../../data/photographers.json");
     const data = await response.json();
     const photographers = data.photographers;
-    console.log(photographers); // Affichage des données récupérées dans la console
     return { photographers }; // Retourner les données récupérées
   } catch (error) {
     console.error("Error fetching photographers data:", error);
@@ -12,8 +12,8 @@ async function getPhotographers() {
 }
 
 function photographerTemplate(data) {
-  // var isLoaded=false, une fois que tout est chargé, le passer à true pour afficher toute la page
-  const { name, id, city, country, tagline, price, portrait } = data; // Récupération des données du photographe
+  // Récupération des données du photographe
+  const { name, id, city, country, tagline, price, portrait } = data;
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
@@ -31,7 +31,7 @@ function photographerTemplate(data) {
     img.setAttribute("src", picture);
     img.setAttribute("alt", name);
     img.setAttribute("class", "imgPhotographer");
-    
+
     // Création de la localisation
     const localisationElement = document.createElement("p");
     localisationElement.textContent = `${city}, ${country}`;
