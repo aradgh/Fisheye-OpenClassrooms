@@ -14,7 +14,7 @@ async function displayData(photographers) {
 // Initialiser la page d'accueil
 async function init() {
   // Récupérer les données des photographes
-  const { photographers } = await getPhotographers();
+  const { photographers } = await getPhotographersData();
   // Afficher les données
   displayData(photographers);
 }
