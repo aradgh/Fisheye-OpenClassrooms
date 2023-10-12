@@ -42,17 +42,6 @@ async function displayPhotographerData(photographer) {
   buttonContact.after(imgPhotographerDOM); // On ajoute après le bouton contact l'image
 }
 
-function lightbox() {
-  // Éléments du DOM
-  const figures = document.querySelectorAll("figure");
-
-  figures.forEach((figure) => {
-    figure.addEventListener("click", () => {
-      console.log("ça marchheeeee");
-    });
-  });
-}
-
 //Variable globale pour calculer le nombre de likes
 let totalLikes = 0;
 
@@ -141,7 +130,7 @@ async function init() {
   await displayPhotographerData(photographer);
   await displayMedias(medias, name);
 
-  // lightbox();
+  initLightbox(medias, photographer);
 
   updateLikes(medias);
 }

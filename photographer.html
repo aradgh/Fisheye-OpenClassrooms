@@ -71,10 +71,34 @@
         </form>
       </div>
     </div>
+    <div id="lightbox" class="lightbox__background">
+      <div class="lightbox__modal">
+        <img
+          id="previous_arrow"
+          src="assets/icons/previous--orange.svg"
+          alt="Précédent"
+          class="lightbox__previous_arrow"
+        />
+        <div id="lightbox_media" class="lightbox__media"></div>
+        <img
+          id="next_arrow"
+          src="assets/icons/next--orange.svg"
+          alt="Suivant"
+          class="lightbox__next_arrow"
+        />
+        <img
+          id="close-lightbox-modal"
+          src="assets/icons/close--orange.svg"
+          alt="Fermer la lightbox"
+          class="lightbox__close"
+        />
+      </div>
+    </div>
     <script src="/scripts/templates/media.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/pages/media.js"></script>
     <script src="/scripts/templates/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

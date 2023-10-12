@@ -368,7 +368,7 @@ form textarea {
 }
 
 /* Lightbox */
-.background {
+.lightbox__background {
   position: fixed;
   top: 0;
   right: 0;
@@ -379,7 +379,7 @@ form textarea {
   justify-content: center;
   align-items: center;
 }
-.lightbox {
+.lightbox__modal {
   position: relative;
   width: 1100px;
   height: 800px;
@@ -390,30 +390,28 @@ form textarea {
   align-items: center;
   padding: 30px;
 }
-.lightbox__previous,
-.lightbox__next {
+.lightbox__previous_arrow,
+.lightbox__next_arrow {
   width: 40px;
   height: 40px;
   cursor: pointer;
 }
-.lightbox__image {
-  width: 900px;
+.lightbox__media {
   overflow: hidden;
 }
-.lightbox__image img,
-.lightbox__image video {
-  width: 100%;
+.lightbox__media img,
+.lightbox__media video {
+  max-width: 100%;
   height: 675px;
-  object-fit: cover;
   border-radius: 5px;
 }
-.lightbox__image h2 {
+.lightbox__media h2 {
   margin: 5px 0 0 0;
   font-size: 24px;
   color: #901c1c;
   font-weight: normal;
 }
-.close {
+.lightbox__close {
   position: absolute;
   top: 30px;
   right: 30px;
