@@ -2,15 +2,19 @@
 const closeButtonLightbox = document.getElementById("close-lightbox-modal");
 const lightbox = document.getElementById("lightbox");
 const mediaPlaceholder = document.getElementById("lightbox_media");
+let medias = [];
 
+// Une fonction doit avoir une fonctionnalité unique
+// Créer une fonction qui va prendre la resp de chercher dans le DOM
+// Medias doit être une liste d'objet, 
+// une fois que c'est un objet, on ne manipule plus le DOM mais l'objet en question
 function initLightbox(mediasData, photographer) {
-  // Pourquoi je ne peux pas le mettre en variable globale ?
-  const medias = document.querySelectorAll("figure");
+  // Init des medias après leur chargement
+  medias = document.querySelectorAll("figure");
 
   medias.forEach((media) => {
     media.addEventListener("click", () => {
-      const mediaId = media.getAttribute("id");
-      openLightbox(mediaId, mediasData, photographer);
+      openLightbox(media.id, mediasData, photographer);
     });
   });
 
@@ -30,6 +34,7 @@ function openLightbox(mediaId, mediasData, photographer) {
   const srcVideo = `assets/images/${photographer.name}/${video}`; // On prépare le lien vers la vidéo
 
   if (image != undefined) {
+    // TODO : à mettre dans une fonction
     const img = document.createElement("img");
     img.setAttribute("src", srcImage);
     img.setAttribute("alt", "");
@@ -37,6 +42,7 @@ function openLightbox(mediaId, mediasData, photographer) {
     mediaPlaceholder.appendChild(img);
   }
   if (video != undefined) {
+    // TODO : à mettre dans une fonction
     const video = document.createElement("video");
     const src = document.createElement("source");
     src.setAttribute("src", srcVideo);
@@ -47,6 +53,7 @@ function openLightbox(mediaId, mediasData, photographer) {
     video.appendChild(src);
     mediaPlaceholder.appendChild(video);
   }
+  // TODO : à mettre dans une fonction
   const h2 = document.createElement("h2");
   h2.textContent = title;
   mediaPlaceholder.appendChild(h2);
