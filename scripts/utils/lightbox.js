@@ -6,11 +6,18 @@ let medias = [];
 
 // Une fonction doit avoir une fonctionnalité unique
 // Créer une fonction qui va prendre la resp de chercher dans le DOM
-// Medias doit être une liste d'objet, 
+// Medias doit être une liste d'objet,
 // une fois que c'est un objet, on ne manipule plus le DOM mais l'objet en question
 function initLightbox(mediasData, photographer) {
   // Init des medias après leur chargement
   medias = document.querySelectorAll("figure");
+
+  console.log(medias);
+
+  // On récupère la liste des ids des medias dans l'ordre où ils sont triés
+  let mediaIdslist = Array.from(mediasData).map(function (media) {
+    return media.id;
+  });
 
   medias.forEach((media) => {
     media.addEventListener("click", () => {

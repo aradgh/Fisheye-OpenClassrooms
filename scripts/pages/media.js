@@ -97,4 +97,6 @@ select.addEventListener("change", async function () {
     media.remove();
   });
   await displayMedias(mediasSorted, name);
+  // Réinitialiser la lightbox après le tri des médias
+  initLightbox(mediasSorted, photographer);
 });
